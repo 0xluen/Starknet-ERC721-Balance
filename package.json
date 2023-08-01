@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon erc721.ts"
+    "start": "nodemon erc721.ts"
   },
   "dependencies": {
     "@argent/get-starknet": "^4.6.3",
@@ -16,6 +16,7 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "nanoid": "3.3.4",
     "next": "12.2.4",
+    "node-fetch": "^3.3.2",
     "pg": "^8.7.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -1,5 +1,6 @@
 import { Provider, RawCalldata } from "starknet";
 import { BigNumberish, toBN } from "starknet/utils/number";
+const { Alchemy }= require('./config');
 
 type CallContractParameters = {
   starknetNetwork: "mainnet" | "goerli";
@@ -24,9 +25,7 @@ export const callContract = async ({
   entrypoint,
   calldata,
 }: CallContractParameters) => {
-  const provider = new Provider({
-    network: starknetNetwork === "mainnet" ? "mainnet-alpha" : "goerli-alpha",
-  });
+  const provider = new Provider({ rpc: { nodeUrl: Alchemy } })
   const rawCalldata: RawCalldata = [];
   calldata?.forEach((d) => rawCalldata.push(getRawCallData(d)));
   const response = await provider.callContract({
@@ -34,5 +33,6 @@ export const callContract = async ({
     entrypoint,
     calldata: rawCalldata,
   });
+  console.log(response.result)
   return response.result;
 };
